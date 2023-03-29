@@ -10,11 +10,8 @@ function PostDetailsPage() {
 
   let { postId } = useParams();
   PostService.getPost(+postId!).then((res) => {
-    let post: PostModel = res.data;
     PostService.getPostComments(+postId!).then((res) => {
       setPostComments(res.data);
-
-      // = res.data;
     });
 
     setPostDetails(res.data);
@@ -30,7 +27,7 @@ function PostDetailsPage() {
           <div className='row'>
             {postComments.map((comment) => (
               <div className='card m-2 col-12'>
-                <span className="fw-bolder">{comment.name}</span>
+                <span className='fw-bolder'>{comment.name}</span>
                 <span> {comment.body}</span>
               </div>
             ))}

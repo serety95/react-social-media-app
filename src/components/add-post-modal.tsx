@@ -26,7 +26,7 @@ function AddPostModal(props: any) {
     e?.preventDefault();
 
     let newPost: PostModel = { ...data, userId: 1 };
-    PostService.addNewPost(newPost);
+    PostService.addNewPost(newPost).then((res)=>props.addNewPost(res.data))
     reset();
     props.closeModal();
   };

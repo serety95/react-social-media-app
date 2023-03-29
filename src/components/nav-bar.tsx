@@ -2,12 +2,19 @@ import React, { useState } from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import AddPostModal from "./add-post-modal";
+import { PostModel } from "../models/post-model";
 
-function NavBar() {
+function NavBar(props: any) {
+
   const [showAddPostModal, setShowAddPostModal] = useState(false);
   const closeModalHandler = () => {
     setShowAddPostModal(false);
+    props.showToasterMsg();
   };
+  const addNewPostHandler=(newPost:PostModel)=>{
+    props.pushNewPost(newPost);
+    console.log(newPost);
+  }
   return (
     <Navbar bg='dark' variant='dark'>
       <Container>
@@ -26,7 +33,7 @@ function NavBar() {
           aria-labelledby='contained-modal-title-vcenter'>
           Add Post
         </Button>
-        <AddPostModal show={showAddPostModal} closeModal={closeModalHandler} />
+        <AddPostModal show={showAddPostModal} closeModal={closeModalHandler} addNewPost={addNewPostHandler} />
       </Container>
     </Navbar>
   );

@@ -8,10 +8,8 @@ const PostService = {
   getPost,
   getPostComments,
 };
-function addNewPost(newPost: PostModel) {
-  axios.post("https://jsonplaceholder.typicode.com/posts", newPost).then((res) => {
-    console.log(res);
-  });
+function addNewPost(newPost: PostModel): Promise<any> {
+  return axios.post("https://jsonplaceholder.typicode.com/posts", newPost)
 }
 function getAllPosts():Promise<any> {
   return axios.get("https://jsonplaceholder.typicode.com/posts");
