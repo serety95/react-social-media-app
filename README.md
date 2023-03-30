@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Demo link
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+you can visit [demo](https://react-social-media-objposts.vercel.app/) 
+
+
 
 ## Available Scripts
 
