@@ -30,7 +30,7 @@ function AddPostModal(props: any) {
     reset();
     props.closeModal();
   };
-  //const [showToaster, setShowToaster] = useContext(postToasterContext);
+
 
   return (
     <Modal show={props.show} onHide={props.closeModal} size='lg' centered backdrop='static'>

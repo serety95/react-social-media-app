@@ -30,7 +30,7 @@ function PostDetailsPage(props: any) {
   }, [postDetails]);
 
   return postDetails ? (
-    <div className='container'>
+    <section className='container'>
       <div className='row card shadow m-2 p-3'>
         <span className='col-12 fw-bolder text-capitalize'>{postDetails?.title}</span>
         <span className='col-12'>{postDetails?.body}</span>
@@ -38,13 +38,13 @@ function PostDetailsPage(props: any) {
           <img
             className='img-fluid img-thumbnail'
             src='https://scontent.fcai21-3.fna.fbcdn.net/v/t31.18172-8/12000837_764846786970516_8871490860410260806_o.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeGUkNacVpR7Cl79P5-P6bMkYlHq84OnuQpiUerzg6e5CiUe9xQVgjr1c5pgzMoStvo&_nc_ohc=CoFlVZEYYMkAX_6EmzG&_nc_ht=scontent.fcai21-3.fna&oh=00_AfCBdhNvJnJ579-cZfEtmXVblMaK12NOIFmDZG3CZ3EezA&oe=644C0D04'
-            alt='post-image'
+            alt={postDetails?.title}
           />
         </span>
-        <span className='col-12'>
-          <h4>Comments</h4>
-          {postComments ? (
+        <span className='col-12 '>
+          {postComments.length !== 0 ? (
             <>
+              <h4>Comments</h4>
               {postComments.map((comment, index) => (
                 <Comment key={index} {...comment} />
               ))}
@@ -54,9 +54,9 @@ function PostDetailsPage(props: any) {
           )}
         </span>
       </div>
-    </div>
+    </section>
   ) : (
-    <div className='container'>no post</div>
+    <section className='container'>no post</section>
   );
 }
 

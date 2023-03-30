@@ -7,13 +7,14 @@ import { ReactComponent as LogoSvg } from "../logo.svg";
 
 function NavBar(props: any) {
   const locationPath = useLocation().pathname;
-  console.log(locationPath);
 
   const [showAddPostModal, setShowAddPostModal] = useState(false);
+
   const closeModalHandler = () => {
     setShowAddPostModal(false);
     props.showToasterMsg();
   };
+  
   const addNewPostHandler = (newPost: PostModel) => {
     props.pushNewPost(newPost);
   };
@@ -29,7 +30,7 @@ function NavBar(props: any) {
             Home
           </NavLink>
           <NavLink onClick={(e) => e.preventDefault()} className='nav-link' to='/posts'>
-            posts
+            Post Details
           </NavLink>
         </Nav>
         <Button
