@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import "./App.scss";
 
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import HomePage from "./views/home-page";
 import NavBar from "./components/nav-bar";
 import PostDetails from "./views/post-details-page";
@@ -12,6 +12,8 @@ import { PostModel } from "./models/post-model";
 import PostService from "./services/post-service";
 
 function App() {
+
+  const navigate = useNavigate();
   const [showToaster, setShowToaster] = useState(false);
   const [postsList, setPostsList] = useState<Array<PostModel>>([]);
   const showToasterMsg = () => {
@@ -22,8 +24,9 @@ function App() {
       PostService.getAllPosts().then((res) => setPostsList(res.data));
     }
   }, [postsList]);
-  const pushNewPostHandler = (newPost: any) => {
-    setPostsList([...postsList, newPost]);
+  const pushNewPostHandler = (newPost: PostModel) => {
+    setPostsList([newPost,...postsList ]);
+   navigate(`/posts/${newPost.id}`, { replace: true });
   };
   return (
     <div className='App'>

@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import AddPostModal from "./add-post-modal";
 import { PostModel } from "../models/post-model";
 import { ReactComponent as LogoSvg } from "../logo.svg";
+
 function NavBar(props: any) {
+  const locationPath = useLocation().pathname;
+  console.log(locationPath);
+
   const [showAddPostModal, setShowAddPostModal] = useState(false);
   const closeModalHandler = () => {
     setShowAddPostModal(false);
@@ -29,6 +33,7 @@ function NavBar(props: any) {
           </NavLink>
         </Nav>
         <Button
+          disabled={locationPath !== "/"}
           variant='primary'
           onClick={() => setShowAddPostModal(true)}
           aria-labelledby='contained-modal-title-vcenter'>

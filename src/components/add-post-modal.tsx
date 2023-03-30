@@ -40,12 +40,12 @@ function AddPostModal(props: any) {
       <form onSubmit={handleSubmit(onSubmit)}>
         <Modal.Body>
           <label htmlFor='title' className='form-label'>
-            Title
+            Post Title
           </label>
           <input type='text' id='title' className='form-control' {...register("title")} />
           <p className='text-danger'>{errors.title?.message}</p>
           <label htmlFor='body' className='form-label'>
-            Body
+            Post Body
           </label>
           <textarea id='body' className='form-control' {...register("body")} />
           <p className='text-danger'>{errors.body?.message}</p>
