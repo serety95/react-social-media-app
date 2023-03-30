@@ -18,14 +18,10 @@ function App() {
     setShowToaster(true);
   };
   useEffect(() => {
-      if (postsList.length <= 0) {
-        PostService.getAllPosts().then((res) => setPostsList(res.data));
-      } else {
-        console.log("happy seCNARIO",postsList);
-      }
-    },
-    [postsList]
-  );
+    if (postsList.length <= 0) {
+      PostService.getAllPosts().then((res) => setPostsList(res.data));
+    }
+  }, [postsList]);
   const pushNewPostHandler = (newPost: any) => {
     setPostsList([...postsList, newPost]);
   };
@@ -34,7 +30,7 @@ function App() {
       <NavBar showToasterMsg={showToasterMsg} pushNewPost={pushNewPostHandler} />
       <Routes>
         <Route path='/' element={postsList.length > 0 && <HomePage postsList={postsList} />} />
-        <Route path='posts/:postId' element={<PostDetails posts={postsList} />} />
+        <Route path='posts/:postId' element={<PostDetails postsList={postsList} />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
       <ToastContainer className='p-3' position={"bottom-end"}>

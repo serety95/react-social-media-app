@@ -12,15 +12,13 @@ function NavBar(props: any) {
   };
   const addNewPostHandler = (newPost: PostModel) => {
     props.pushNewPost(newPost);
-    
   };
   return (
     <Navbar bg='dark' variant='dark' sticky={"top"}>
       <Container>
         <Navbar.Brand>
           <LogoSvg />
-          {/* <img src={logoSvg} width='30' height='30' className='d-inline-block align-top' alt='React Bootstrap logo' /> */}
-          Navbar
+          ObJPOSTS
         </Navbar.Brand>
         <Nav className=''>
           <NavLink className='nav-link' to='/' end>
