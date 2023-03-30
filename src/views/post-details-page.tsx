@@ -18,16 +18,16 @@ function PostDetailsPage(...props: any) {
   }
 
   useEffect(() => {
-    console.log("hii post", postDetails);
+   
     if (!postDetails) {
-      console.log("hii");
+
       PostService.getPost(+postId!).then((res) => {
         setPostDetails(res.data);
       });
     }
 
     return () => {
-      console.log("hii2");
+
       PostService.getPostComments(+postId!).then((res) => {
         setPostComments(res.data);
       });
