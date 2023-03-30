@@ -27,7 +27,7 @@ function PostDetailsPage(props: any) {
         setPostComments(res.data);
       });
     };
-  }, [postDetails]);
+  }, [postDetails, props.postsList, postId]);
 
   return postDetails ? (
     <section className='container'>
