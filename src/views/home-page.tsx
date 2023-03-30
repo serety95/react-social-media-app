@@ -7,7 +7,7 @@ function HomePage(props:any) {
 
   return (
     <div className='container'>
-      {props.postsList && props.postsList.map((post: PostModel) => <Post {...post} key={`post-${post.id}`} />)}
+      {props.postsList && props.postsList.map((post: PostModel, i:number) => <Post {...post} key={`post-${i}`} />)}
     </div>
   );
 }
