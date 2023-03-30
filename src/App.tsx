@@ -18,27 +18,23 @@ function App() {
     setShowToaster(true);
   };
   useEffect(() => {
-    if (postsList.length <= 0) {
-      PostService.getAllPosts().then((res) => setPostsList(res.data));
-    }else{
-      console.log('happy seCNARIO');
-      
-    }
-  }, [postsList]);
-  ///console.log(PostService.postsList);
-
+      if (postsList.length <= 0) {
+        PostService.getAllPosts().then((res) => setPostsList(res.data));
+      } else {
+        console.log("happy seCNARIO",postsList);
+      }
+    },
+    [postsList]
+  );
   const pushNewPostHandler = (newPost: any) => {
-    console.log("new post in app comp", newPost);
-
     setPostsList([...postsList, newPost]);
-    console.log("new posts update", postsList);
   };
   return (
     <div className='App'>
       <NavBar showToasterMsg={showToasterMsg} pushNewPost={pushNewPostHandler} />
       <Routes>
         <Route path='/' element={postsList.length > 0 && <HomePage postsList={postsList} />} />
-        <Route path='posts/:postId' element={<PostDetails />} />
+        <Route path='posts/:postId' element={<PostDetails posts={postsList} />} />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
       <ToastContainer className='p-3' position={"bottom-end"}>
